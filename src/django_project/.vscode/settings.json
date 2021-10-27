@@ -1,0 +1,6 @@
+// {
+//     "python.analysis.cacheFolderPath": "\"python.autoComplete.extraPaths\": [\"./path-to-your-code\"]",
+//     "python.envFile": ".env",
+//     "python.pythonPath": "env/bin/python3.8",
+//     "python.autoComplete.extraPaths": [".env/bin/python"],
+// }
