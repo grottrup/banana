@@ -14,7 +14,12 @@ from pathlib import Path
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+
+#BASE_DIR for mac users
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+#BASE_DIR for windows users
+#BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) 
 
 
 # Quick-start development settings - unsuitable for production
@@ -74,6 +79,7 @@ WSGI_APPLICATION = 'my_django_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+#Databse for mac
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -81,6 +87,17 @@ DATABASES = {
     }
 }
 
+#Database for Windows
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#    }
+#}
+
+
+#
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -124,3 +141,6 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' 
