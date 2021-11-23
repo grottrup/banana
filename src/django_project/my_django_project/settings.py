@@ -44,8 +44,8 @@ AUTHENTICATION_BACKENDS = (
 
 INSTALLED_APPS = [
 
-    'personal',
-    'account',
+#    'personal',
+#    'account',
     
     'django.contrib.admin',
     'django.contrib.auth',
