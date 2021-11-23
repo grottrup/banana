@@ -8,8 +8,15 @@ from django.http import HttpResponse
 from django.contrib.auth import login, authenticate, logout
 from UserHub.forms import RegistrationForm, AccountAuthenticationForm
 from django.shortcuts import render	
+from django.conf import settings
+from django.views.generic.base import TemplateView
 
 # Create your views here.
+
+class IndexTemplateView(TemplateView):
+    def get_template_names(self):
+        template_name = "index.html"
+        return template_name
 
 def register_view(request, *args, **kwargs):
 	user = request.user
