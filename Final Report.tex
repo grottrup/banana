@@ -1,0 +1,402 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[table]{xcolor}
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage{imakeidx}
+\usepackage{imakeidx}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{outlines}
+\usepackage{forloop}
+\usepackage{pgfgantt}
+\usepackage{comment}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor,colortbl}
+
+\renewcommand{\labelitemi}{\textbullet}
+\renewcommand{\labelitemii}{\textbullet}
+
+\makeindex[name=Alphabetical,title={Alphabetical Index},columns=1]
+\makeindex[name=Functions,title={Index of Functions},columns=1]
+
+\newcounter{loopcntr}
+\newcommand{\rpt}[2][1]{%
+  \forloop{loopcntr}{0}{\value{loopcntr}<#1}{#2}%
+}
+\newcommand{\on}[1][1]{
+  \forloop{loopcntr}{0}{\value{loopcntr}<#1}{&\cellcolor{gray}}
+}
+\newcommand{\off}[1][1]{
+  \forloop{loopcntr}{0}{\value{loopcntr}<#1}{&}
+}
+\begin{comment}
+- Introduction
+- Glossary
+- Setup
+- Product description
+    - Final product
+    - Pre vs Post Product
+    - Deviations from requirements
+- Software process discussion
+    - Our process
+    - Discussion of alternatives
+- Software reuse 
+- Testing
+    - White box & Black box
+    - Deviations from tests
+- Other deviations
+    - Deviations in time
+    - Deviations from process
+    - Reasons and performed actions
+- Work distribution 
+
+\end{comment}
+
+\title{Final Report - Softwareteknologi} % Sets article title
+\author{Artin Ghalamkary - (AU677595) \and Karsten Bak Malle - (AU644054) \and Nikita Svanholm Alsøer - (AU639436) \and Phillip Ravn Boe Jensen - (AU681033)}% Sets authors name
+\date{420-69-2021}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introduction} \index[Alphabetical]{Introduction}
+The purpose of the final report is to conclude the email client project, and give an overview of the ideal product and the achieved product. The report will consists of sections such as the product the description that compare the requirements set at the beginning of the project and the requirements achieved at the end of the project. Other section consists of different types deviations, the reasons behind the deviations and also our thoughts on the project. 
+
+\section*{Setup}\index[Alphabetical]{User requirements definition}
+To setup the mail client follow the steps below.
+For the first client:
+\begin{enumerate}
+    \item Clone github and navigate to src/django\_project to find relevant code:
+    \begin{itemize}
+        \item https://github.com/grottrup/banana
+    \end{itemize}
+    \item Cd into it:
+    \begin{itemize}
+        \item cd my\_django\_project (src/django\_project/)
+    \end{itemize}
+    \item Create a venv(virtual environment):
+    \begin{itemize}
+        \item python3 -m venv venv
+    \end{itemize}
+    \item Activate venv:
+    \begin{itemize}
+        \item Mac/Linux: source venv/bin/activate
+        \item Windows - bash: source venv/Scripts/activate
+        \item Windows - cmd: venv\textbackslash{}Scripts\textbackslash{}activate.bat
+        \item Windows - PowerShell: venv\textbackslash{}Scripts\textbackslash{}activate.ps1
+    \end{itemize}
+    \item Install requirements:
+    \begin{itemize}
+        \item pip install -r requirements.txt
+    \end{itemize}
+    \item Create DB (Database):
+    \begin{itemize}
+        \item python manage.py makemigrations
+    \end{itemize}
+    \item Apply DB changes:
+    \begin{itemize}
+        \item python manage.py migrate
+    \end{itemize}
+    \item Run the server:
+    \begin{itemize}
+        \item python manage.py runserver
+    \end{itemize}
+    \item navigate to the site \href{http://127.0.0.1:8000}{here}
+\end{enumerate}
+For the second client:
+\begin{itemize}
+    \item \textbf{Virtual environment: }
+
+    \begin{enumerate}
+        \item First cd into django\_project folder and setup a virtual environment by and running the following:
+
+            
+        \begin{itemize}
+            \item cd django\_project
+            \item  python -m venv venv
+        \end{itemize}
+
+        \item Activate virtual environment:   
+        \begin{table}[h]
+            \begin{tabular}{|l|l|l|ll}
+            \cline{1-3}
+            \textbf{Platform} & \textbf{Shell} & \textbf{Command to activate virtual environment}        &     &  \\ \cline{1-3}
+            Mac/Linux         & bash           & source venv/bin/activate                                &  &  \\ \cline{1-3}
+            Windows           & cmd.exe        & venv\textbackslash{}Scripts\textbackslash{}activate.bat &  &  \\ \cline{1-3}
+                          & PowerShell     & venv\textbackslash{}Scripts\textbackslash{}activate.ps1 &  &  \\ \cline{1-3}
+            \end{tabular}
+        \end{table}
+    \end{enumerate}                                           
+            
+    
+    \item \textbf{Requirements: } 
+    \begin{enumerate}
+        \item Install the latest Python 3.
+        Then run the following to install the required Python packages.
+        
+        \begin{itemize}
+        \item pip install -r requirements.txt
+        \end{itemize}
+
+    \end{enumerate}
+    
+    \item \textbf{Make database migrations: } 
+    \begin{enumerate}
+        \item Cd into mail\_client
+        
+        \begin{itemize}
+        \item cd mail\_client
+        \end{itemize}
+        
+        \item And run following:
+        
+        \begin{itemize}
+        \item python manage.py makemigrations django\_mailbox 
+        \item python manage.py makemigrations mail
+        \item python manage.py migrate
+        \end{itemize}
+
+    \end{enumerate}
+    \item \textbf{Configure your google email client: } 
+    \begin{enumerate}
+        \item Create a google account if you do not already have one.
+        \item Generate your App password see how her: \url{https://developers.decoded.africa/index.php/2021/05/10/using-gmail-as-an-email-client-for-your-django-web-app/}
+        And here: \url{https://support.google.com/mail/answer/185833?hl=en-GB}
+        
+        \item Open the json file named "config.json" inside the django\_project folder.
+        \item Insert the credentials in the json file.
+
+    \end{enumerate}
+    \item \textbf{Create a Admin user: } 
+    \begin{enumerate}
+        \item To create an admin user cd to mail_client, if you are not already directed to the folder
+        and run following:
+        
+        \begin{itemize}
+        \item cd mail\_client
+        
+        \item python manage.py createsuperuser
+        
+        \item {YourEmail}@gmail.com
+        
+        \item password to {YourEmail}@gmail.com
+        
+        \item password to BananaMail App
+        
+        \item Repeat password to BananaMail App
+        
+        \item python manage.py runserver
+        \end{itemize}
+        
+        \item Now you can go to \url{http://127.0.0.1:8000/}, and login to BananaMail
+
+    \end{enumerate}
+\end{itemize}
+
+
+
+
+\section*{Product description}\index[Alphabetical]{Product description}
+
+\subsection*{Final Product}\index [Alphabetical]{Final Product}
+The final product dubbed The Banana Client is an web based email client. The final product has been divided into two functional products, where each has its own limited functionalities. More detail on this, see section \hyperref[sec:deviations]{"Other Deviations"}.
+
+\subsection*{Ideal product vs Actual product}\index[Alphabetical]{Ideal product vs Actual product}
+List below in the different tables is the requirements for both the ideal- and actual product. The table for the ideal products requirements is the requirements we specified in the System-requirements report. The table for the actual product requirements is the we have realized.
+
+\definecolor{cornflowerblue}{rgb}{0.39, 0.58, 0.93}
+
+\vspace{5 mm}
+\begin{table}[h] 
+\hspace{-101pt}
+\begin{tabular}{|l|l|l|} 
+\hline
+\multicolumn{3}{|c|}{User requirements}                                                                                                                                                                                                                                                                                                                                          \\ 
+\hline
+ID & \multicolumn{1}{c|}{Ideal product}                                                                                                                                                                                & \multicolumn{1}{c|}{Actual product}                                                                                                                     \\ 
+\hline
+1. & \begin{tabular}[c]{@{}l@{}}Mail client should be able to display, send, and receive\\emails as well as let the user be able to reply and forward \\the emails receive through the selected server.\\\end{tabular} & \begin{tabular}[c]{@{}l@{}}The Banana Client can display, send and receive emails\\but the reply and forward functionality does not work.\end{tabular}  \\ 
+\hline
+2. & \begin{tabular}[c]{@{}l@{}}Mail client should provide the user the opportunity to \\login to their personal email.\end{tabular}                                                                                   & \begin{tabular}[c]{@{}l@{}}The user can login to their personal email using \\The Banana Client.~\end{tabular}       \\ 
+\hline
+3. & The user should be able to blacklist any emails.                                                                                                                                                                  & The user can't blacklist any emails.                                                                                                                    \\ 
+\hline
+4. & \begin{tabular}[c]{@{}l@{}}The user should be able to login to multiple emails \\at the same time.\end{tabular}                                                                                                   & The user can login to multiple emails as the same time.                                                                                                 \\ 
+\hline
+5. & The user should be able to delete any email.                                                                                                                                                                      & The user can delete any emails.                                                                                                                         \\ 
+\hline
+6. & The user should be able to mark emails as read/unread.                                                                                                                                                            & The user can't mark emails as read/unread.                                                                                                               \\ 
+\hline
+7. & \begin{tabular}[c]{@{}l@{}}The user should be able to attach files and pictures to \\their emails.\end{tabular}                                                                                                   & The user can attach files and pictures to their emails.                                                                                                 \\ 
+\hline
+8. & The user should be able to compose an email.                                                                                                                                                                      & The user can compose an email.                                                                                                                          \\
+\hline
+\end{tabular}
+\end{table}
+
+
+\subsection*{Deviations from requirements}\index[Alphabetical]{Deviations from requirements}
+The following section describes the deviation from the tables above. The cause of the deviations will be discussed later in the section \hyperref[sec:deviations]{"Other Deviations"}. The numeration below also corresponds to the requirements id from the tables above.
+\begin{enumerate}
+    \item \textit{Fully functional - }\textbf{Send}. 
+    \newline \textit{Limited functionality - }\textbf{Display \& Receive emails: } The functions are limited in the sense that you can only display and receive emails by logging in with an admin account, AND by accessing the admin panel. (http://127.0.0.0.1:8000/admin).
+    \newline \textit{Not functional - }\textbf{Reply \& Forward}.
+    
+    \item  \textit{Limited functionality - }\textbf{Login to personal email: }\textbf{IMPORTANT!!!} The function does work but to get your personal inbox the functionality will empty your inbox from your personal mail client to do so. Therefore we advise the user \textbf{NOT} to do so currently. This is because of the way the client-function of fetching emails works, because it transfers the emails from their respective email clients and folders, over into our email-client.
+    
+    \item \textit{Not functional - }\textbf{Blacklisting email}.
+    
+    \item \textit{Limited functionality - }\textbf{Login to multiple emails at the same time: } The function is limited in the sense that you can only login to multiple emails if you use different browsers. This is because we use Django and we have build the client as a web-client.
+    
+    
+    \item \textit{Fully functional - }\textbf{Delete email: } The user can delete any mail and multiple mails at a time.
+    
+    
+    \item \textit{Limited functionality - }\textbf{Mark as read/unread:} The function is limited in the sense that you can only mark emails by logging in with an admin account, AND by accessing the admin panel. The emails will not be shown as marked with bolt text because the function is not implemented in the view, but it can be accessed using the admin panel. (http://127.0.0.0.1:8000/admin).
+    
+    \item \textit{Fully functional - }\textbf{Attach files \& pictures}.
+    
+    
+    \item \textit{Fully functional - }\textbf{Compose email}. 
+    
+\end{enumerate}
+
+
+\section*{Software process discussion}\index[Alphabetical]{Software process discussion}
+As stated in the systems-requirement report, we chose to primarily use an agile process based approach with a bit of a plan-driven approach to develop the mail client. This section will come into details of our approach. \\
+Pros \& cons for agile:
+\begin{itemize}
+    \item \textbf{Pros: } 
+    \begin{enumerate}
+         \item When faced with different types of deviations, the fact that we were highly inspired by the agile work process, allowed us to be more flexible in terms of re-planning and restructuring our time-plan (which was one of the only parts of our approach that was plan-driven)
+        \item The implementation of the agile process allowed for the company-engineers to have regularly scheduled meetings with the client, prepared and flexible enough to change fundamental structures and requirements of the product, in compliance with the client's requests.
+        \item The agile process has also helped to tackle unpredicted and unexpected requirements and nonfunctional requirements. "Expect the unexpected". 
+        \item Facing problems during the integration phase, the agile process helped in restructuring the plan. For example with the front-end, we started and planned the front-end of Banana Client using Vue as the framework for JS. When integrating with the working Django middleware and back-end we got errors upon errors. The agile process allowed us to change the framework tool it was build upon without a massive time delay and get a working full-stack product.   
+    \end{enumerate}
+    \item \textbf{Cons: } 
+    \begin{enumerate}
+        \item The focus on agile, allowed for a lot of freedom and flexibility, which at times could spill over into becoming a disadvantage, due to the lack of structure and a concrete "blueprint" (which could be the advantage of taking inspiration from the waterfall model), to help navigate in getting from A to B, where A is the planning and B is the execution and finalization of a working product.
+    \end{enumerate}
+\end{itemize}
+
+\section*{Software reuse}\index[Alphabetical]{Software reuse}
+
+With the usage of a framework, we have been able to implement different software artefacts from the Django framework, such as classes, objects, and functions, which has provided us with an architecture that has made the structuring and creation of applications alot more streamline and easy to use. 
+\begin{itemize}
+
+    
+    \item \textbf{Front-end:} For front-end we have re-used the "sidebar" component from "Bootstrap4" changing the layout and theme, the original sidebar can be found \href{https://bootstrapious.com/tutorial/sidebar/index4.html#}{here.} \footnote{https://bootstrapious.com/tutorial/sidebar/index4.html#}
+    \item \textbf{Middleware: } 
+    \begin{enumerate}
+        \item For middleware we have reused a lot of Django's own classes such as EmailMessage, which is used to send email. The structure of the function send\_email where EmailMessage is used have been created by ourselves.
+        \item The calendar that we have created is heavily inspired by Hui Wen. Much of the functionality is reused, but some of it is restructured so it fits our client. Hui Wen's calendar can be found \href{https://github.com/huiwenhw/django-calendar}{here.}\footnote{https://github.com/huiwenhw/django-calendar} 
+        \item The blacklist which we would have created would have been a complete reuse of Zeioths' blacklisting. It can be found \href{https://github.com/Zeioth/django-email-blacklist}{here.} \footnote{https://github.com/Zeioth/django-email-blacklist}
+        \item For testing the middleware, we have used django own testing functions, with some minor changes to fit our own sending method. The inspiration used to create the test case can be found \href{https://timonweb.com/django/testing-emails-in-django/}{here.} \footnote{https://timonweb.com/django/testing-emails-in-django/}
+        \end{enumerate}
+    \item \textbf{Back-end: } 
+    \begin{enumerate}
+        \item For backend, the Django framework has helped with standard creation and maintenance of the database, sqlite3, and the automatic encryption of the data. 
+        \item Functionalities concerning and regarding signing up, resetting password, has in a high degree been reused and taken inspiration from the following, which also has heavily reused from standard Django framework, where some structural changes and different attributes have been changed, but the core functionality remains. It can be found
+        \href{https://developers.decoded.africa/index.php/2021/05/10/using-gmail-as-an-email-client-for-your-django-web-app/}{here}.\footnote{https://developers.decoded.africa/index.php/2021/05/10/using-gmail-as-an-email-client-for-your-django-web-app/}
+        \item For testing the backend, the primary functionalities have been reused, just with some minor changes to fit in with our differential credentials, and keywords, but the mail functionality of standard testing is similar. It can be found
+        \href{https://developers.decoded.africa/index.php/2021/05/10/using-gmail-as-an-email-client-for-your-django-web-app/}{here,}\footnote{https://developers.decoded.africa/index.php/2021/05/10/using-gmail-as-an-email-client-for-your-django-web-app/}
+        \href{https://mkdev.me/en/posts/how-to-cover-django-application-with-unit-tests}{and here}.
+        \footnote{https://mkdev.me/en/posts/how-to-cover-django-application-with-unit-tests}
+    \end{enumerate}
+\end{itemize}
+
+\section*{Testing}\index[Alphabetical]{Testing}
+
+\begin{itemize}
+    \item \textbf{White-Box testing:}
+    
+    As a quick recap, whitebox testing is the process of testing with the knowledge of the internal structure of the components, hence the explicit details are taken into consideration. The unit tests specified in the test plan has been tested primarily using white box testing which can be found in the code.(file: tests.py, test3.py)
+    \item \textbf{Black-Box testing:}
+    
+    As a quick recap, we know that black-box testing is the process of testing without knowledge or looking at the internals. For all of our black-box testing, we have implemented Django's standard self-testing functionalities, which has, as mentioned above, been a way for us to test the functionalities without going into the details, or looking at the internals. Black-box testing has widely been used in backend, because the standard Django functions which have been mentioned before also have their own tests. We also use a Django function such as is\_valid(), which is Djangos own way of testing if fields contain correct data. This function is used quite through out middleware and backend.
+    
+    \item \textbf{Deviations from tests:}
+    The following unit tests were not tested. More detail on this, see section \hyperref[sec:deviations]{"Other Deviations"}.
+    \begin{enumerate}
+        \item TU 1.1.1 Forward
+        \item TU 1.1.2 Reply
+        \item TU 1.4 Blacklist
+        \item We were also not able to do BVA's
+    \end{enumerate}
+\end{itemize}
+
+\section*{Other deviations}\index[Alphabetical]{Appendices}
+
+\label{sec:deviations}
+As explained previously in the other sections, the ideal final product was not fully achieved, due to deviations throughout the semester, which is what will be discussed in this section.
+\subsection*{Deviations in time}\index[Alphabetical]{Deviations in time}
+\begin{itemize}
+    \item \textbf{Sickness:}
+        \begin{itemize}
+            \item Due to sickness, we were unfortunately not able to meet up as a whole group, which resulted in us being behind schedule and not be able to discuss certain topics such as role division. Sickness primarily had an impact in the early stages of the project, and set us back approximately 2 weeks.
+        \end{itemize}
+    \item \textbf{Lack of attendance at company meetings:}
+    \begin{itemize}
+        \item Due to lack of attendance at the company meetings, we missed inputs and thoughts from a member, and all members were not informed of all relevant information, both regarding internal agreements and also agreements with the customer. This resulted in deadlines not being held, and a complete lack of communication between a member and the rest of the company. 
+    \end{itemize}
+    
+    \item  \textbf{Delayed functionalities:}
+    \begin{itemize}
+        \item The previous two deviations is the cause of the following deviation. First because of the latency of some functionalities from a member other members were not able to completely fulfill their own assignments such as creating a blacklist. As a company we were not able to fulfill all requirements agreed upon with the customer, which also resulted in hand-in of two separate products.
+    \end{itemize}
+    \item \textbf{External clients (other courses):}
+\begin{itemize}
+    \item Other courses had an impact on our project, with their content and assignments causing a slight deviation in time. 
+\end{itemize}
+\end{itemize}
+
+\begin{comment}
+ - Sickness
+ - Lack of attendance at company meetings
+ - Delayed functionalities 
+ - External clients (other courses)
+\end{comment}
+
+\subsection*{Deviations from process}\index[Alphabetical]{Deviations from process}
+In general, the company worked in the manner that was stated in the early reports, in terms of which processes were used in the creation and development of the product. With the agile development process being the main focus, this was seen clearly, with regular scheduled meetings and new fixes, development phases etc being flexible. There was also the plan-driven as well, which can be see in the report when arranging and structuring the work-plan of the project. However, the company does not recall any substantial deviation from the processes, hence no noteworthy comments for this section.
+\subsection*{Reasons and performed actions}\index[Alphabetical]{Reasons and performed actions}
+
+Throughout the various deviations, the company needed some serious company meetings, to discuss and reach a consensus regarding how to properly communicate as colleagues, and how to fully function as a team. 
+\newline
+On top of this, another way the company dealt with deviations was through summoning other engineers onto areas that needed extra attention and help, hence the work distribution (see below) has a subsection indicating, which engineers helped on what areas, when 2 pairs of eyes were needed, or just in certain areas where an open dialogue was agreed upon when developing.
+\newpage
+
+\section*{Project and team topics}\index[Alphabetical]{Project and team topics}
+
+\subsection*{Work distribution}
+\begin{itemize}
+    \item \textbf{Artin:}
+    \begin{enumerate}
+        \item \textbf{Main:} Middleware: (Send mail, calendar, blacklist(not functional)), Main Integrator, documentation(all reports both original and corrected), test cases both middleware and backend, Customer service(standup mettings and private meetings)
+        \item \textbf{Assisted:} Front-end, back-end
+    \end{enumerate}
+    \item \textbf{Karsten:}
+    \begin{enumerate}
+        \item \textbf{Main:} Frontend: (All except inbox, sent\_mail), customer service (private meetings), logo, documentation(all reports both original and corrected), 
+        \item \textbf{Assisted:} Middleware
+    \end{enumerate}
+    \item \textbf{Nikita:}
+    \begin{enumerate}
+        \item \textbf{Main:} Middleware: (Django Admin configuration, Sent, Inbox and delete mail, including front end for these. get new mail(back end that loads new mail when page is refreshed),
+        reply(not functional), read/unread(not functional), imap, server.json, User account, mailbox and message models and database integration,), Main Integrator, all test cases for mailbox, both front, middleware and backend.
+        \item \textbf{Assisted:} Send mail
+    \end{enumerate}
+    \item \textbf{Phillip:}
+    \begin{enumerate}
+        \item \textbf{Main:} Back end - all(Signup, Login, Logout, Forgot/Reset Password, all related to database, encryption of database, etc), Documentation(all reports, both original and corrected), test cases both middleware and backend, Customer service (standup meetings and private meetings), Human Resources, 
+        \item \textbf{Assisted:} Middle-ware
+    \end{enumerate}
+\end{itemize}
+
+\printindex[Alphabetical]
+\printindex[Functions]
+
+\end{document}
+
