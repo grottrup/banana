@@ -1,0 +1,54 @@
+{
+  "servers": {
+    "Gmail" : {
+      "incoming_server" : "imap.gmail.com",
+      "incoming_port" : "993",
+      "incoming_encryption" : "SSL",
+      "outgoing_server" : "smtp.gmail.com",
+      "outgoing_port" : "465"
+    },
+    "Outlook" : {
+      "incoming_server" : "imap.outlook.com",
+      "incoming_port" : "993",
+      "incoming_encryption" : "SSL",
+      "outgoing_server" : "smtp-mail.outlook.com",
+      "outgoing_port" : "587"
+    },
+    "Office365" : {
+      "incoming_server" : "outlook.office365.com",
+      "incoming_port" : "993",
+      "incoming_encryption" : "SSL",
+      "outgoing_server" : "smtp.office365.com",
+      "outgoing_port" : "587"
+    },
+    "AU" : {
+      "incoming_server" : "post.au.dk",
+      "incoming_port" : "993",
+      "incoming_encryption" : "SSL",
+      "outgoing_server" : "smtp.gmail.com",
+      "outgoing_port" : "465"
+    },
+    "Yahoo DK" : {
+      "incoming_server" : "smtp.mail.yahoo.dk",
+      "incoming_port" : "993",
+      "incoming_encryption" : "SSL",
+      "outgoing_server" : "smtp.mail.yahoo.dk",
+      "outgoing_port" : "465"
+    },
+    "Yahoo COM" : {
+      "incoming_server" : "imap.mail.yahoo.com",
+      "incoming_port" : "993",
+      "incoming_encryption" : "SSL",
+      "outgoing_server" : "smtp.mail.yahoo.com",
+      "outgoing_port" : "465"
+    }
+  },
+  "domains": {
+    "gmail.com": "Gmail",
+    "outlook.com": "Outlook",
+    "hotmail.com": "Outlook",
+    "au.dk": "Office365",
+    "ece.au.dk": "Office365",
+    "post.au.dk" : "AU"
+  }
+}
