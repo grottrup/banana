@@ -1,0 +1,164 @@
+{% extends 'users/base.html' %} {% load crispy_forms_tags %} {% block content %}
+
+<div class="backgroundcolorwhite" style="
+    z-index: 1;
+    background-color: white;
+    right: 0%;
+    top: 0;
+    position: fixed;
+    height: 100%;
+    width: 35%;
+  ">
+    <div>
+        <img src="../../static/users/assets/icons/login/together.png" class="custom" style="
+        height: 110%;
+        width: 65%;
+        position: fixed;
+        z-index: 1;
+        top: -10%;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        padding-top: 20px;
+        left: 0;
+      " alt="Responsive image" />
+    </div>
+
+    <div class="logincss" style="
+      height: 100%;
+      width: 20%;
+      position: fixed;
+      z-index: 1;
+      top: 20%;
+      padding-right: 1%;
+      right: 7%;
+    ">
+        <form method="post">
+            {% csrf_token %}
+
+            <fieldset class="form-group" style="
+          font-family: AvenirBook;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 18px;
+        ">
+                <legend class="mb-4" style="
+            text-align: left;
+            font-size: 48px;
+            font-family: LogoFontBold;
+            color: black;
+            background-color: white;
+          ">
+                    Log In
+                </legend>
+                <div class="custom-form-div" style="
+            padding-top: 20px;
+            position: relative;
+            margin: 30px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 30px;
+            display: flex;
+            max-height: 370px;
+            justify-content: space-between;
+            flex-direction: column;
+          ">
+                    {{ form|crispy }}
+
+            </fieldset>
+            <div class="form-group mt-2">
+                <button class="custom-button" type="submit">Log In</button>
+                <small class="text-muted ml-2" style="
+                font-family: AvenirBook;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 18px;
+                top: 28px;
+                position: relative;
+              ">
+                    <a href="{% url 'password_reset' %}">Forgot Password?</a>
+                </small>
+            </div>
+        </form>
+        <div class="pt-3">
+            <small class="text-muted" style="
+              font-family: AvenirBook;
+              font-style: normal;
+              font-weight: 500;
+              font-size: 18px;
+              top: 28px;
+              position: relative;
+            ">
+                Don't have an account yet?
+                <a href="{% url 'signup' %}" class="ml-2">Sign Up</a>
+            </small>
+        </div>
+    </div>
+</div>
+</div>
+
+<style>
+    .the-custom-navbar {
+    display: none;
+    }
+
+    input {
+        margin: 10px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 34px;
+        height: 45px;
+        font-family: AvenirBook;
+        font-size: 24px;
+    }
+
+    .custom-button {
+        display: block;
+        width: 100%;
+        border: none;
+        background-color: #feda14;
+        padding: 5px 28px;
+        font-family: LogoFont;
+        font-size: 24px;
+        cursor: pointer;
+        text-align: center;
+        position: relative;
+        top: -20px;
+    }
+
+    .custom-button:hover {
+        color: #fff;
+    }
+
+    body {
+        background-color: white;
+    }
+
+    @font-face {
+        font-family: LogoFont;
+        src: url(../../static/users/assets/fonts/CoHeadlineW08Regular.ttf);
+    }
+
+    @font-face {
+        font-family: LogoFontBold;
+        src: url(../../static/users/assets/fonts/CoText_Trial_Bd.ttf);
+    }
+
+    @font-face {
+        font-family: AvenirBook;
+        src: url(../../static/users/assets/fonts/Montserrat/Montserrat-Regular.ttf);
+    }
+
+    @font-face {
+        font-family: AvenirLight;
+        src: url(../../static/users/assets/fonts/Montserrat/Montserrat-Light.ttf);
+    }
+
+    @font-face {
+        font-family: AvenirRoman;
+        src: url(../../static/users/assets/fonts/Montserrat/Montserrat-Black.ttf);
+    }
+</style>
+
+{% endblock content%}

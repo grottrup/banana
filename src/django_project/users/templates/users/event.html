@@ -1,0 +1,95 @@
+{% extends 'users/base.html' %} {% block title %} Event {% endblock title%}
+{%block content %}
+
+<form method="post">
+  {% csrf_token %}
+  <div class="custom-event-position" style="position: relative; margin: auto;
+  width: 769px;
+  top: 120px;
+  padding: 10px;">
+  <table class="custom-table-event">
+    {{ form }}
+    <div class="button-wrapper-position" style="position: relative; top: 424px; left: -460px;">
+        <button type="submit" class="custom-button-create-event" style="
+        border: none;
+        position: relative;
+        width: 131px;
+        height: 44px;
+        left: 1104px;
+        top: 66px;
+        z-index: 3;
+  
+        background: #feda14;
+        border-radius: 91px;
+        cursor: pointer;
+  
+        text-align: center;
+      "
+    >Create Event</button> </div>
+  </table>
+</div>
+</form>
+
+<footer class="footer mt-5 py-3 bg-fff" style="z-index: 5; position: fixed; top: 880px; left: 915px">
+  <div class="container text-center">
+    <span class="text-muted">
+      Powered by Banana mail inc
+    </span>
+  </div>
+</footer>
+
+<style>
+  body {
+    background-color: white;
+  }
+
+  .form {
+    margin: auto;
+  }
+
+  .form input,
+  .form select,
+  .form textarea {
+  
+  }
+  .custom-event-position label {
+    width: 142px;
+    height: 47px;
+    text-align: center;
+    background: #F8F8F8;
+    border-radius: 28.5px;
+    margin-right: 21px;   
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 47px;
+  }
+  #id_title,
+  #id_start_time,
+  #id_end_time {
+    height: 50px;
+    width: 606px;
+    background: #FFFFFF;
+    border: 1px solid #B8B8B8;
+    font-family: Montserrat;
+    font-size: 18px;  
+  }
+  #id_description{
+    width: 606px;
+    height: 254px;
+    background: #FFFFFF;
+    border: 1px solid #B8B8B8;  
+  }
+
+  @font-face {
+    font-family: Montserrat;
+    src: url(../../static/users/assets/fonts/Montserrat/Montserrat-Regular.ttf);
+  }
+
+  @font-face {
+    font-family: Montserrat-SemiBold;
+    src: url(../../static/users/assets/fonts/Montserrat/Montserrat-SemiBold.ttf);
+  }
+</style>
+{% endblock content%}

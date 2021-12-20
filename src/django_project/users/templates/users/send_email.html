@@ -1,0 +1,443 @@
+{% extends 'users/base.html' %} {% load crispy_forms_tags %} {% block content %}
+<div
+  class="backgroundcolorwhite"
+  style="
+    background-color: white;
+    right: 0%;
+    top: 0px;
+    position: relative;
+    height: 100%;
+    width: 100%;
+  "
+>
+  <div
+    class="custom-wrapper-send-email"
+    style="
+      position: relative;
+      left: 315px;
+      top: 40px;
+      width: 1820px;
+      font-family: Montserrat;
+    "
+  >
+    <form method="post" action="" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="custom-send-wrapper">
+        <div
+          class="custom-to-email-field"
+          style="
+            position: absolute;
+
+            width: 131px;
+            height: 44px;
+            left: -153px;
+            top: 0px;
+
+            background: #f8f8f8;
+            border-radius: 28.5px;
+
+            text-align: center;
+          "
+        >
+          <div style="position: relative; top: 10px">To:</div>
+        </div>
+
+        <div
+          class="custom-to-email"
+          style="width: 1200px; position: relative; margin-bottom: 28px"
+        >
+          {{ form.to_email|as_crispy_field }}
+        </div>
+
+        <button
+          class="custom-button-cc-bcc"
+          onclick="ExpandBccCc()"
+          id="bcc-cc-button"
+          style="
+            border: none;
+            position: absolute;
+            width: 131px;
+            height: 44px;
+            left: 1221px;
+            top: 0px;
+
+            background: #e5e5e5;
+            border-radius: 91px;
+            cursor: pointer;
+
+            text-align: center;
+          "
+        >
+          <div
+            class="custom-text-button-cc-bcc"
+            style="
+              text-align: center;
+              display: flex;
+              align-items: center;
+              position: relative;
+              left: 28px;
+              border: none;
+              outline: none;
+              font-family: Montserrat-SemiBold;
+              font-size: 18px;
+            "
+          >
+            Cc/Bcc
+          </div>
+        </button>
+
+        <div id="bcc-cc" style="display: none">
+          <div
+            class="custom-cc-email-field"
+            style="
+              position: absolute;
+
+              width: 131px;
+              height: 44px;
+              left: -153px;
+              top: 74px;
+
+              background: #f8f8f8;
+              border-radius: 28.5px;
+
+              text-align: center;
+            "
+          >
+            <div style="position: relative; top: 10px">Cc:</div>
+          </div>
+          <div
+            class="custom-cc-email"
+            style="width: 1200px; position: relative; margin-bottom: 28px"
+          >
+            {{ form.cc|as_crispy_field }}
+          </div>
+          <div
+            class="custom-bcc-email-field"
+            style="
+              position: absolute;
+
+              width: 131px;
+              height: 44px;
+              left: -153px;
+              top: 147px;
+
+              background: #f8f8f8;
+              border-radius: 28.5px;
+
+              text-align: center;
+            "
+          >
+            <div style="position: relative; top: 10px">Bcc:</div>
+          </div>
+          <div
+            class="custom-bcc-email"
+            style="width: 1200px; position: relative; margin-bottom: 28px"
+          >
+            {{ form.bcc|as_crispy_field }}
+          </div>
+        </div>
+
+        <div
+          class="custom-line-index"
+          id="send-mail-line"
+          style="
+            position: relative;
+            border-style: solid;
+            border-width: 0px 0px 1px 0px;
+            border-color: #a37302;
+
+            width: 1200px;
+            display: block;
+            margin-top: 0px;
+            margin-bottom: 28px;
+          "
+        ></div>
+
+        <div
+          class="custom-subject-email-field"
+          id="subject-field"
+          style="
+            position: absolute;
+
+            width: 131px;
+            height: 44px;
+            left: -153px;
+            top: 105px;
+
+            background: #f8f8f8;
+            border-radius: 28.5px;
+
+            text-align: center;
+          "
+        >
+          <div style="position: relative; top: 10px">Subject:</div>
+        </div>
+
+        <div
+          class="custom-subject-email"
+          style="width: 1200px; position: relative; margin-bottom: 28px"
+        >
+          {{ form.subject|as_crispy_field }}
+        </div>
+
+        <div
+          class="custom-message-email-field"
+          id="message-field"
+          style="
+            position: absolute;
+
+            width: 131px;
+            height: 44px;
+            left: -153px;
+            top: 177px;
+
+            background: #f8f8f8;
+            border-radius: 28.5px;
+
+            text-align: center;
+          "
+        >
+          <div style="position: relative; top: 10px">Message:</div>
+        </div>
+
+        <div
+          class="custom-message-email"
+          style="width: 1200px; position: relative; margin-bottom: 28px"
+        >
+          {{ form.message|as_crispy_field }}
+        </div>
+
+        <button
+          class="custom-button-attachment"
+          id="custom-attachment"
+          style="
+            border: none;
+            position: absolute;
+            width: 131px;
+            height: 44px;
+            left: 0px;
+            top: 454px;
+            z-index: 3;
+
+            background: #e5e5e5;
+            border-radius: 91px;
+            cursor: pointer;
+
+            text-align: center;
+          "
+        >
+          <div
+            class="custom-text-button-attachment"
+            style="
+              text-align: center;
+              display: flex;
+              align-items: center;
+              position: relative;
+              left: 8px;
+              border: none;
+              outline: none;
+              font-family: Montserrat-SemiBold;
+              font-size: 16px;
+            "
+          >
+            Choose Files
+          </div>
+        </button>
+
+        <div
+          class="custom-wrapper-attachment-email"
+          style="position: relative; left: -186px; top: -50px"
+        >
+          <div
+            class="custom-hide-attachment-email"
+            style="
+              border: none;
+              position: relative;
+              width: 131px;
+              height: 44px;
+              left: 190px;
+              top: 46px;
+              z-index: 1;
+
+              background: #fff;
+            "
+          ></div>
+          <div class="custom-attachment-email">
+            {{ form.attachment|as_crispy_field }}
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          class="custom-button-send"
+          id="custom-send"
+          style="
+            border: none;
+            position: absolute;
+            width: 131px;
+            height: 44px;
+            left: 1069px;
+            top: 454px;
+            z-index: 3;
+
+            background: #feda14;
+            border-radius: 91px;
+            cursor: pointer;
+
+            text-align: center;
+          "
+        >
+          <div
+            class="custom-text-button-send"
+            style="
+              text-align: center;
+              display: flex;
+              align-items: center;
+              position: relative;
+              left: 36px;
+              border: none;
+              outline: none;
+              font-family: Montserrat-SemiBold;
+              font-size: 18px;
+            "
+          >
+            Send
+          </div>
+        </button>
+      </div>
+    </form>
+  </div>
+  <footer
+    class="footer mt-5 py-3 bg-fff"
+    style="z-index: 5; position: fixed; top: 880px; left: 915px"
+  >
+    <div class="container text-center">
+      <span class="text-muted"> Powered by Banana mail inc </span>
+    </div>
+  </footer>
+</div>
+
+<script type="text/javascript">
+  function ExpandBccCc() {
+    var x = document.getElementById("bcc-cc");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+    var y = document.getElementById("subject-field");
+    if (y.style.top === "105px") {
+      y.style.top = "250px";
+    } else {
+      y.style.top = "105px";
+    }
+    var z = document.getElementById("message-field");
+    if (z.style.top === "177px") {
+      z.style.top = "322px";
+    } else {
+      z.style.top = "177px";
+    }
+    var z1 = document.getElementById("send-mail-line");
+    if (z1.style.width === "1200px") {
+      z1.style.left = "-150px";
+      z1.style.width = "1350px";
+    } else {
+      z1.style.left = "0px";
+      z1.style.width = "1200px";
+    }
+    var z2 = document.getElementById("custom-attachment");
+    if (z2.style.top === "454px") {
+      z2.style.top = "599px";
+    } else {
+      z2.style.top = "454px";
+    }
+    var z3 = document.getElementById("custom-send");
+    if (z3.style.top === "454px") {
+      z3.style.top = "599px";
+    } else {
+      z3.style.top = "454px";
+    }
+  }
+
+  const realAttachment = document.getElementById("attachment-id");
+  const customBtn = document.getElementById("custom-attachment");
+  customBtn.addEventListener("click", function () {
+    realAttachment.click();
+  });
+</script>
+
+<style>
+  @media (min-width: 768px) {
+  }
+
+  .custom-inbox-small-img,
+  .custom-inbox-big-img {
+    filter: brightness(0) saturate(100%) !important;
+  }
+  .sidebar-big-text-inbox {
+    color: black;
+    font-family: Montserrat-SemiBold;
+  }
+
+  .custom-attachment-email {
+    position: relative;
+    left: 0px;
+  }
+
+  #attachment-id {
+    font-family: Montserrat;
+    font-size: 16px;
+  }
+
+  .custom-navbar-compose-field{
+    background: #feda14 !important;
+  }
+
+  input {
+    margin: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    height: 45px;
+    border-radius: 30px;
+    padding-left: 20px;
+    font-family: Montserrat;
+    font-size: 24px;
+  }
+
+  body {
+    background-color: white;
+  }
+
+  @font-face {
+    font-family: LogoFont;
+    src: url(../../static/users/assets/fonts/CoHeadlineW08Regular.ttf);
+  }
+
+  @font-face {
+    font-family: LogoFontBold;
+    src: url(../../static/users/assets/fonts/CoText_Trial_Bd.ttf);
+  }
+
+  @font-face {
+    font-family: Montserrat;
+    src: url(../../static/users/assets/fonts/Montserrat/Montserrat-Regular.ttf);
+  }
+
+  @font-face {
+    font-family: Montserrat-SemiBold;
+    src: url(../../static/users/assets/fonts/Montserrat/Montserrat-SemiBold.ttf);
+  }
+
+  @font-face {
+    font-family: Montserrat-Light;
+    src: url(../../static/users/assets/fonts/Montserrat/Montserrat-Light.ttf);
+  }
+
+  @font-face {
+    font-family: Montserrat-Black;
+    src: url(../../static/users/assets/fonts/Montserrat/Montserrat-Black.ttf);
+  }
+</style>
+{% endblock content%}

@@ -1,0 +1,203 @@
+{% extends 'users/base.html' %} {% block title %} {{ calendar }} {% endblock %}
+{% block content %}
+<div class="clearfix">
+  <button
+    class="custom-button-prev-month"
+    style="
+      border: none;
+      position: relative;
+      width: 172px;
+      height: 44px;
+      left: 176px;
+      top: 66px;
+      z-index: 3;
+
+      background: #e5e5e5;
+      border-radius: 91px;
+      cursor: pointer;
+
+      text-align: center;
+    "
+  >
+    <a href="{% url 'calendar' %}?{{ prev_month }}">
+      Previous Month
+    </a>
+  </button>
+
+  <button
+    class="custom-button-new-event"
+    style="
+      border: none;
+      position: relative;
+      width: 131px;
+      height: 44px;
+      left: 1104px;
+      top: 66px;
+      z-index: 3;
+
+      background: #feda14;
+      border-radius: 91px;
+      cursor: pointer;
+
+      text-align: center;
+    "
+  >
+    <a href="{% url 'new_event' %}">
+      New Event
+    </a>
+  </button>
+
+  <button
+    class="custom-button-next-month"
+    style="
+      border: none;
+      position: relative;
+      width: 172px;
+      height: 44px;
+      left: 1114px;
+      top: 66px;
+      z-index: 3;
+
+      background: #e5e5e5;
+      border-radius: 91px;
+      cursor: pointer;
+
+      text-align: center;
+    "
+  >
+    <a href="{% url 'calendar' %}?{{ next_month }}">
+      Next Month
+    </a>
+  </button>
+</div>
+<div class="custom-calendar">{{ calendar }}</div>
+
+
+<style>
+  body {
+    background-color: white;
+  }
+  .calendar {
+    width: 80%;
+    margin: auto;
+    font-size: 13px;
+  }
+
+  .custom-navbar-calendar-field{
+    background: #feda14 !important;
+  }
+
+  .custom-button-prev-month a,
+  .custom-button-new-event a {
+    display: inline-block;     
+    position: relative;    
+    z-index: 1;     
+    padding: 10px 20px;     
+    margin: -2em; 
+    text-align: center;
+    align-items: center;
+    outline: none;
+    font-family: Montserrat-SemiBold;
+    font-size: 16px;
+  }
+
+  .custom-button-next-month a {
+    display: inline-block;     
+    position: relative;    
+    z-index: 1;     
+    padding: 10px 36px;     
+    margin: -2em; 
+    text-align: center;
+    align-items: center;
+    outline: none;
+    font-family: Montserrat-SemiBold;
+    font-size: 16px;
+  }
+
+  .calendar tr,
+  .calendar td {
+    border: 1px solid #b8b8b8;
+    z-index: 2;
+  }
+
+  .calendar th {
+    font-size: 24px;
+    padding: 8px;
+    text-align: center;
+    font-family: Montserrat-SemiBold;
+    border: 1px solid #b8b8b8;
+  }
+
+  .calendar td {
+    width: 200px;
+    height: 122px;
+    padding: 20px 0px 0px 5px;
+  }
+
+  .month {
+    font-size: 36px !important;
+    border-width: 1px 1px 0px 1px !important;
+    border-style: solid !important;
+    border-color: #fff !important;
+    position: relative !important;
+    top: -20px !important;
+    text-align: center;
+    font-family: Montserrat-SemiBold;
+  }
+
+  .date {
+    position: relative;
+    top: -2px;
+    font-size: 18px;
+    font-family: Montserrat-SemiBold;
+    text-align: center;
+    display: inline-block;
+  }
+
+  .calendar-dots {
+    position: relative;
+    top: 3px;
+    left: -1px;
+    height: 25px;
+    width: 25px;
+    background-color: #e5e5e5;
+    border-radius: 50%;
+    text-align: center;
+    display: inline-block;
+  }
+
+  .custom-calendar ul {
+    height: 100%;
+    padding: 10px 5px 0px 20px;
+    font-size: 14px;
+    font-family: Montserrat;
+  }
+
+  a {
+    color: #17a2b8;
+  }
+  .left {
+    float: left;
+  }
+
+  .right {
+    float: right;
+  }
+
+  .clearfix {
+    margin: 5px;
+    margin-top: -40px;
+  }
+
+  @font-face {
+    font-family: Montserrat;
+    src: url(../../static/users/assets/fonts/Montserrat/Montserrat-Regular.ttf);
+  }
+
+  @font-face {
+    font-family: Montserrat-SemiBold;
+    src: url(../../static/users/assets/fonts/Montserrat/Montserrat-SemiBold.ttf);
+  }
+</style>
+
+{% endblock %}
