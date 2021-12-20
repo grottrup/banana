@@ -9,7 +9,7 @@ Note: python commands in mac can be python3 instead of python
 2. create a venv using python3 -m venv venv (if venv is already created skip this step)
 3. actiave venv using:
     mac: source venv/bin/activate or source/Scripts/activate
-    windows: source venv/Scripts/actiavte (bash), venv\Sripcts\activate.bat (cmd) or venv\Scripts\activate.ps1
+    windows: source venv/Scripts/actiavte (bash), venv\Sripcts\activate.bat (cmd) or venv\Scripts\activate.ps1(powershell)
 4. install requirements.txt using:
     pip install -r requirements.txt
 5. create DB:
