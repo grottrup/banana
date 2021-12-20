@@ -7,6 +7,9 @@ Note: python commands in mac can be python3 instead of python
 Note: Make sure to use the following username and password to login into the mail client:
     username: bananamailceo@gmail.com
     password: Bananainc123
+Note: step 2,5 and 6, we have already done before, to make it easier, but just in case run step 5 and 6 to be sure
+everythint runs smoothly
+
 
 1. cd into src/django_project/
 2. create a venv using python3 -m venv venv (if venv is already created skip this step)
