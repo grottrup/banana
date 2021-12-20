@@ -75,12 +75,15 @@ def send_email(request):
             # get the submitted message
             message = form.cleaned_data['message']
 
+            # get the sender
             from_email = request.user.email
 
+            # used to get data from forms.py
             to_email = form.cleaned_data
             cc = form.cleaned_data
             bcc = form.cleaned_data
-            #attach1 = form.cleaned_data['attachment']
+            
+            # gets a list of files
             files = request.FILES.getlist('attachment')
          
             if from_email and to_email:
@@ -95,11 +98,12 @@ def send_email(request):
                     cc=[cc['cc']])
 
                     is_attachment_empty = bool(files)
-
+                    #for loop for cycling through multiple attachments
                     if is_attachment_empty == True:
                         for f in files:
                             mailmsg.attach(f.name, f.read(), f.content_type)
                     
+                    #make so the email content type is html
                     mailmsg.content_subtype = 'html'
                     mailmsg.send()
                     messages.success(request, f'An email has been sent')

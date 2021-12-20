@@ -1,13 +1,9 @@
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.contrib.auth.models import User
-from django.db.models import CharField, Value as V, F
 from django.db.models.functions import Concat
 from django.forms import ModelForm, DateInput
 from users.models import event, User
-
-
-
 
 class UserSignUpForm(UserCreationForm):
     # doing this makes the email field a mandatory field for the user to input data
@@ -20,13 +16,9 @@ class UserSignUpForm(UserCreationForm):
         # the form should display the following fields
         fields = ['first_name', 'last_name', 'username', 'email','email_password', 'password1', 'password2']
 
-# we will a create a form with a drop down list of users who have signed up
-# the drop down will display the names of the users, but will hold the user emails
-# as the drop down/select value. This is the value that will be submited when a user submits the form
-
-# the form will also have a large text area that can accomodate 2,000 words for the user to type the message
 class EmailMessageForm(forms.Form):
     
+    # the email recipients
     to_email = forms.EmailField()
     cc = forms.EmailField()
     bcc = forms.EmailField()
@@ -35,10 +27,8 @@ class EmailMessageForm(forms.Form):
 
     # the email message textarea
     message = forms.CharField(max_length=2000,widget=forms.Textarea)
+    #the email attachment(s)
     attachment = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple':True}))
-
-
-    #attachment = forms.FileField()
 
     def __init__(self, *args, **kwargs):
         super(EmailMessageForm, self).__init__(*args, **kwargs) # Call to ModelForm constructor

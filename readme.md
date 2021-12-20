@@ -4,6 +4,9 @@
 Steps to ensure client works:
 
 Note: python commands in mac can be python3 instead of python
+Note: Make sure to use the following username and password to login into the mail client:
+    username: bananamailceo@gmail.com
+    password: Bananainc123
 
 1. cd into src/django_project/
 2. create a venv using python3 -m venv venv (if venv is already created skip this step)
@@ -19,3 +22,7 @@ Note: python commands in mac can be python3 instead of python
 7. run the server:
     python manage.py runserver
 8. navigate to http://127.0.0.1:8000
+
+
+For testing run the following command:
+python manage.py test (code relevant to this is in test.py under the users folder)
