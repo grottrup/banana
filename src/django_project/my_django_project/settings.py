@@ -170,13 +170,10 @@ EMAIL_USE_SSL = False
 # view all email sent from it to other emails
 
 EMAIL_HOST_USER = config.get('EMAIL_HOST')
-DEFAULT_EMAIL_FROM = 'email'
-#EMAIL_HOST_USER = 'email'
+
 # if you saved the data inside window’s environmental variable 
-# EMAIL_HOST_USER = os.environ.get('EMAIL_HOST')
 
 # the generated app password for the GMAIL account to use
-#EMAIL_HOST_PASSWORD = config.get('EMAIL_PASSWORD')
 EMAIL_HOST_PASSWORD = config.get('EMAIL_PASSWORD')
 # if you saved the data inside window’s environmental variable 
 # EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
