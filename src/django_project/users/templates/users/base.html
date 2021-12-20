@@ -32,9 +32,11 @@
     <!-- Sidebar  -->
     <nav id="sidebar" class="the-custom-navbar">
       <div class="sidebar-header">
-        <button type="button" id="sidebarCollapse" class="custom-button-navbar">
-          <img class="custom-button-navbar-img" src="../../static/users/assets/icons/burgermenu.png" />
-        </button>
+        <button type="button" id="sidebarCollapse" class="custom-navbar-button">
+          <span></span>
+          <span></span>
+          <span></span>
+      </button>
       </div>
 
       <div class="sidebar-compose-small">
@@ -51,10 +53,10 @@
 
 
 
-      <ul class="sidebar-icons-small">
+      <ul class="sidebar-icons-small" style="list-style-type: none;">
         <li>
           <div class=frame-small>
-            <a class="nav-item nav-link" href="{% url 'send_email' %}"><span class="helper"></span><img
+            <a class="nav-item nav-link" href="{% url 'inbox' %}"><span class="helper"></span><img
                 class="custom-inbox-small-img" src="../../static/users/assets/icons/inboxicon.png"></a>
           </div>
           <div class=frame-small>
@@ -62,15 +64,15 @@
                 class="custom-starred-small-img" src="../../static/users/assets/icons/starredicon.png" /></a>
           </div>
           <div class=frame-small>
-            <a class="nav-item nav-link" href="{% url 'send_email' %}"><span class="helper"></span><img
+            <a class="nav-item nav-link" href="{% url 'sent' %}"><span class="helper"></span><img
                 class="custom-sent-small-img" src="../../static/users/assets/icons/senticon.png" /></a>
           </div>
           <div class=frame-small>
-            <a class="nav-item nav-link" href="{% url 'send_email' %}"><span class="helper"></span><img
+            <a class="nav-item nav-link" href="{% url 'drafts' %}"><span class="helper"></span><img
                 class="custom-draft-small-img" src="../../static/users/assets/icons/draftsicon.png" /></a>
           </div>
           <div class=frame-small>
-            <a class="nav-item nav-link" href="{% url 'send_email' %}"><span class="helper"></span><img
+            <a class="nav-item nav-link" href="{% url 'blacklist' %}"><span class="helper"></span><img
                 class="custom-blacklist-small-img" src="../../static/users/assets/icons/blacklisticon.png" /></a>
           </div>
         </li>
@@ -80,8 +82,8 @@
       <ul class="sidebar-icons-big">
         <li>
           <div class=frame-big>
-            <a class="nav-item nav-link" href="{% url 'send_email' %}"><span class="helper"></span><img
-                class="custom-inbox-big-img" src="../../static/users/assets/icons/inboxicon.png">
+            <a class="nav-item nav-link" href="{% url 'inbox' %}"><span class="helper"></span><img
+                class="custom-inbox-big-img" src="../../static/users/assets/icons/inboxicon.png" />
               <div class="sidebar-big-text-inbox">
                 Inbox</div>
             </a>
@@ -93,19 +95,19 @@
             </a>
           </div>
           <div class=frame-big>
-            <a class="nav-item nav-link" href="{% url 'send_email' %}"><span class="helper"></span><img
+            <a class="nav-item nav-link" href="{% url 'sent' %}"><span class="helper"></span><img
                 class="custom-sent-big-img" src="../../static/users/assets/icons/senticon.png" />
               <div class="sidebar-big-text-sent">Sent</div>
             </a>
           </div>
           <div class=frame-big>
-            <a class="nav-item nav-link" href="{% url 'send_email' %}"><span class="helper"></span><img
+            <a class="nav-item nav-link" href="{% url 'drafts' %}"><span class="helper"></span><img
                 class="custom-draft-big-img" src="../../static/users/assets/icons/draftsicon.png" />
               <div class="sidebar-big-text-draft">Drafts</div>
             </a>
           </div>
           <div class=frame-big>
-            <a class="nav-item nav-link" href="{% url 'send_email' %}"><span class="helper"></span><img
+            <a class="nav-item nav-link" href="{% url 'blacklist' %}"><span class="helper"></span><img
                 class="custom-blacklist-big-img" src="../../static/users/assets/icons/blacklisticon.png" />
               <div class="sidebar-big-text-blacklist">Blacklist</div>
             </a>
@@ -113,26 +115,18 @@
         </li>
       </ul>
 
-      <div class="sidebar-account-transition" style="transition: width 1s;">
-      <ul class="sidebar-small-account">
-        <li>
-          <div>
-            <img class="custom-account-small-img" style="width: 51.48px; height: 51.48px;"
-              src="../../static/users/assets/icons/accounticon1.png" />
-          </div>
-        </li>
-      </ul>
-    </div>
+      <div class="sidebar-account-small" style="transition: all 1s;">
+        <img class="custom-account-small-img" style="width: 51.48px; height: 51.48px; position: relative;"
+          src="../../static/users/assets/icons/accounticon1.png" />
+      </div>
 
-      <ul class="sidebar-big-account" id="delay-account">
-        <li>
+      <div class="sidebar-account-big">
           <div class="account-header-text">Account</div>
           <div class="frame-big-account">
             <div class="sidebar-big-text-account" id="limit-email-char">{{request.user.email}}</div>
           </div>
-        </li>
-      </ul>
-    
+        </div>
+
 
 
     </nav>
@@ -186,9 +180,9 @@
                             text-align: center;
                             cursor: pointer;
                             ">
-                            <a href="{% url 'calendar' %}">Calendar</a>
-          </div>
-          <div class="custom-navbar-compose-field" id="custom-compose-id" style="
+              <a href="{% url 'calendar' %}">Calendar</a>
+            </div>
+            <div class="custom-navbar-compose-field" id="custom-compose-id" style="
                             position: relative;
                             width: 142px;
                             height: 47px;
@@ -200,9 +194,9 @@
                             text-align: center;
                             cursor: pointer;
                             ">
-                            <a href="{% url 'send_email' %}">Compose</a>
-          </div>
-          <div class="custom-navbar-logout-field" id="custom-logout-id" style="
+              <a href="{% url 'send_email' %}">Compose</a>
+            </div>
+            <div class="custom-navbar-logout-field" id="custom-logout-id" style="
                             position: relative;
                             width: 160px;
                             height: 47px;
@@ -214,8 +208,8 @@
                             text-align: center;
                             cursor: pointer;
                             border: 2px solid #949494;">
-                            <a href="{% url 'login' %}">Log Out</a>
-          </div>
+              <a href="{% url 'login' %}">Log Out</a>
+            </div>
             {% else %}
             <a class="nav-item nav-link" style="color: black;" href="{% url 'login' %}">Log In</a>
             <a class="nav-item nav-link" style="color: black;" href="{% url 'signup' %}">Sign Up</a>
@@ -315,20 +309,44 @@
 </html>
 
 <style>
-  .custom-button-navbar {
 
-    background: transparent;
+  #sidebarCollapse {
+    width: 69px;
+    height: 69px;
+    background: #fff;
     border: none;
-    color: transparent;
+}
 
-  }
+#sidebarCollapse span {
+    width: 80%;
+    height: 3px;
+    margin: 0 auto;
+    display: block;
+    background: #A37302;
+    transition: all 0.8s cubic-bezier(0.810, -0.330, 0.345, 1.375) !important;
+}
 
-  .custom-button-navbar-img {
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
+#sidebar.active #sidebarCollapse span:first-of-type {
+    /* rotate first one */
+    transform: rotate(45deg) translate(11px, 11px) !important;
+}
+#sidebar.active #sidebarCollapse span:nth-of-type(2) {
+    /* second one is not visible */
+    opacity: 0;
+}
+#sidebar.active #sidebarCollapse span:last-of-type {
+    /* rotate third one */
+    transform: rotate(-45deg) translate(10px, -10px) !important;
+}
 
-  }
+#sidebarCollapse span {
+    /* no rotation */
+    transform: none;
+    /* all bars are visible */
+    opacity: 1;
+    margin: 5px auto;
+    margin-bottom: 12px;
+}
 
   .custom-navbar {
     transition: all 1s !important;
@@ -357,7 +375,7 @@
     background: #fff;
     color: #fff;
     transition: all 1s;
-    
+
     z-index: 5;
     border-style: solid;
     border-color: #A37302;
@@ -369,8 +387,6 @@
     min-width: 250px;
     max-width: 250px;
     transition: all 1s;
-    
-
   }
 
   #sidebar.active .sidebar-header h3,
@@ -378,44 +394,34 @@
     display: block;
   }
 
-  #sidebar.active .sidebar-header strong {
-    display: none;
-  }
 
-  #sidebar .sidebar-compose-big {
-    display: none;
-  }
-
-  #sidebar.active .sidebar-compose-big {
+  #sidebar.active .sidebar-compose-big,
+  #sidebar.active .sidebar-icons-big,
+  #sidebar.active .sidebar-account-big {
     display: block;
     width: auto;
     height: auto;
-    
+
   }
 
-  #sidebar.active .sidebar-compose-small {
+  #sidebar.active .sidebar-header strong,
+  #sidebar.active .sidebar-compose-small,
+  #sidebar.active .sidebar-icons-small,
+  #sidebar.active .sidebar-account-small {
     display: none;
   }
 
   #sidebar .sidebar-compose-small,
-  #sidebar .sidebar-small-account {
+  #sidebar .sidebar-account-small,
+  #sidebar .sidebar-icons-small {
     display: block;
-    
+
   }
 
-  #sidebar.active .sidebar-icons-small,
-  #sidebar.active .sidebar-small-account {
-    display: none;
-  }
-
+  #sidebar .sidebar-compose-big,
   #sidebar .sidebar-icons-big,
-  #sidebar .sidebar-big-account {
+  #sidebar .sidebar-account-big {
     display: none;
-  }
-
-  #sidebar.active .sidebar-icons-big,
-  #sidebar.active .sidebar-big-account {
-    display: block;
   }
 
   .custom-navbar-home-field a {
@@ -431,6 +437,7 @@
     font-family: Montserrat-SemiBold;
     font-size: 18px;
   }
+
 
   .custom-navbar-calendar-field a,
   .custom-navbar-compose-field a {
@@ -449,10 +456,11 @@
 
   .custom-navbar-calendar-field,
   .custom-navbar-compose-field,
-  .custom-navbar-logout-field {
+  .custom-navbar-logout-field,
+  .custom-navbar-mail-field {
     transition: all 1s;
   }
-  
+
 
   .custom-navbar-logout-field a {
     display: inline-block;
@@ -513,21 +521,21 @@
   .sidebar-big-text-inbox {
     position: relative;
     left: 70px;
-    top: -28px;
+    top: -26px;
     align-items: center;
   }
 
   .sidebar-big-text-starred {
     position: relative;
     left: 70px;
-    top: -23px;
+    top: -21px;
     align-items: center;
   }
 
   .sidebar-big-text-sent {
     position: relative;
     left: 70px;
-    top: -21px;
+    top: -17px;
     align-items: center;
 
   }
@@ -535,14 +543,14 @@
   .sidebar-big-text-draft {
     position: relative;
     left: 70px;
-    top: -16px;
+    top: -12px;
     align-items: center;
   }
 
   .sidebar-big-text-blacklist {
     position: relative;
     left: 70px;
-    top: -12px;
+    top: -7px;
     align-items: center;
   }
 
@@ -574,24 +582,20 @@
     width: 29px;
   }
 
-  .sidebar-small-account {
+  .sidebar-account-small {
     position: relative;
-    margin-top: 57px;
-    top: 28px;
-    left: -15px;
+    top: 85px;
+    left: 0px;
     height: auto;
     /* equals max image height */
     width: auto;
     white-space: nowrap;
-    display: block;
-    width: 51.48px;
-    height: 51.48px;
   }
 
-  .sidebar-big-account {
+  .sidebar-account-big {
     position: relative;
     margin-top: 57px;
-    left: -17px;
+    left: 18px;
     height: auto;
     /* equals max image height */
     width: auto;
@@ -609,7 +613,6 @@
     font-family: Montserrat-SemiBold;
     font-size: 14px;
     color: black;
-
   }
 
   .account-header-text {
@@ -619,6 +622,8 @@
     font-size: 18px;
     align-items: left;
     color: #000000;
+    position: relative;
+    left: -18px;
   }
 
   .frame-big-account {
@@ -635,16 +640,6 @@
     border-radius: 28.5px;
   }
 
-
-
-  #sidebar.active .dropdown-toggle::after {
-    top: auto;
-    bottom: 10px;
-    right: 50%;
-    -webkit-transform: translateX(50%);
-    -ms-transform: translateX(50%);
-    transform: translateX(50%);
-  }
 
   #sidebar .sidebar-header {
     padding: 16px 0px 51px 0px;

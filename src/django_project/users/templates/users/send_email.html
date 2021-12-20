@@ -188,6 +188,7 @@
 
             width: 131px;
             height: 44px;
+            max-height: 44px;
             left: -153px;
             top: 177px;
 
@@ -195,6 +196,7 @@
             border-radius: 28.5px;
 
             text-align: center;
+            
           "
         >
           <div style="position: relative; top: 10px">Message:</div>
@@ -246,23 +248,10 @@
 
         <div
           class="custom-wrapper-attachment-email"
-          style="position: relative; left: -186px; top: -50px"
+          style="position: relative; left: 0px;"
         >
-          <div
-            class="custom-hide-attachment-email"
-            style="
-              border: none;
-              position: relative;
-              width: 131px;
-              height: 44px;
-              left: 190px;
-              top: 46px;
-              z-index: 1;
-
-              background: #fff;
-            "
-          ></div>
-          <div class="custom-attachment-email">
+        <div class="custom-hide-attachment-email" style="width: 140px; height: 40px; position: relative; left: 0px; z-index: 1; background: #fff;"></div>
+          <div class="custom-attachment-email" style="position: relative; top: -46px; left: -768px; z-index: 0;">
             {{ form.attachment|as_crispy_field }}
           </div>
         </div>
@@ -379,11 +368,6 @@
     font-family: Montserrat-SemiBold;
   }
 
-  .custom-attachment-email {
-    position: relative;
-    left: 0px;
-  }
-
   #attachment-id {
     font-family: Montserrat;
     font-size: 16px;
@@ -391,6 +375,12 @@
 
   .custom-navbar-compose-field{
     background: #feda14 !important;
+  }
+
+  #attachment-id.clearablefileinput.form-control-file{
+    width: 280px;
+    cursor: pointer;
+    position: relative;
   }
 
   input {

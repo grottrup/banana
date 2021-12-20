@@ -5,9 +5,13 @@
   {% csrf_token %}
   <div class="custom-event-position" style="position: relative; margin: auto;
   width: 769px;
-  top: 120px;
+  top: -60px;
   padding: 10px;">
   <table class="custom-table-event">
+    <div class="custom-description-label-position" style="position: relative; top: 247px;">
+      <label class="custom-description-label-text" for="id_description">Description:</label>
+    </div>
+    <div class="custom-description-label-hide" style="position: relative; top: 279px; width: 144px; height: 49px; background: #fff;"></div>
     {{ form }}
     <div class="button-wrapper-position" style="position: relative; top: 424px; left: -460px;">
         <button type="submit" class="custom-button-create-event" style="
@@ -16,7 +20,7 @@
         width: 131px;
         height: 44px;
         left: 1104px;
-        top: 66px;
+        top: 150px;
         z-index: 3;
   
         background: #feda14;
@@ -44,7 +48,7 @@
   }
 
   .form {
-    margin: auto;
+    margin: 0px;
   }
 
   .form input,
@@ -64,6 +68,7 @@
     font-weight: normal;
     font-size: 18px;
     line-height: 47px;
+    margin-bottom: 28px;
   }
   #id_title,
   #id_start_time,
@@ -73,13 +78,15 @@
     background: #FFFFFF;
     border: 1px solid #B8B8B8;
     font-family: Montserrat;
-    font-size: 18px;  
+    font-size: 18px;
+    margin-bottom: 28px;  
   }
   #id_description{
     width: 606px;
     height: 254px;
     background: #FFFFFF;
     border: 1px solid #B8B8B8;  
+    margin-bottom: 28px;
   }
 
   @font-face {

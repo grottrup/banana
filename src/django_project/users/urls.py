@@ -23,7 +23,11 @@ urlpatterns = [
     path('calendar/', CalendarView.as_view(), name='calendar'),
     path('event/new/', views.Event, name='new_event'),
     path('event/edit/(?P<event_id>\d+)/', views.Event, name='event_edit'),
+    path('inbox/', auth_views.LoginView.as_view(template_name="users/inbox.html"), name='inbox'),
     path('favorite/', auth_views.LoginView.as_view(template_name="users/favorite.html"), name='favorite'),
+    path('sent/', auth_views.LoginView.as_view(template_name="users/sent.html"), name='sent'),
+    path('drafts/', auth_views.LoginView.as_view(template_name="users/drafts.html"), name='drafts'),
+    path('blacklist/', auth_views.LoginView.as_view(template_name="users/blacklist.html"), name='blacklist'),
 
     # this url will use the builtin django log in view, but we have to pass a template
     # that the view will use to pass its authentication/log in form to for users to enter log in credentials
