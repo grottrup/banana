@@ -8,6 +8,7 @@ from users.models import event, User
 class UserSignUpForm(UserCreationForm):
     # doing this makes the email field a mandatory field for the user to input data
     email = forms.EmailField()
+    email_password = forms.CharField(widget=forms.PasswordInput())
 
     class Meta:
         # this form is to interact with the model/database table below
@@ -15,6 +16,7 @@ class UserSignUpForm(UserCreationForm):
         model = User
         # the form should display the following fields
         fields = ['first_name', 'last_name', 'username', 'email','email_password', 'password1', 'password2']
+        
 
 class EmailMessageForm(forms.Form):
     
